@@ -10,5 +10,10 @@ class Employee_details(models.Model):
     def __str__(self):
         return self.name
 
+class Department_details(models.Model):
+    Dname = models.CharField(max_length=50)
+    Id = models.ForeignKey(Employee_details,on_delete=models.CASCADE)
 
 
+    def __str__(self):
+        return self.Dname

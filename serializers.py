@@ -1,11 +1,17 @@
 from rest_framework import serializers
-from .models import Employee_details
+from .models import Employee_details,Department_details
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee_details
-        fields = ['id', 'name', 'emp_id', 'designation']
+        # fields = ['id', 'name', 'emp_id', 'designation']
+        fields = '__all__'
+class DepartmentSerializer(serializers.ModelSerializer):
+    level = EmployeeSerializer(read_only=True)
+    class Meta:
+        model = Department_details
+        fields = '__all__'
 
     # name = serializers.CharField(max_length=20)
     # emp_id = serializers.IntegerField()
